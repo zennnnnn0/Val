@@ -238,6 +238,7 @@
       }, 500); // Adjust the duration of the fading animation
     }
 
+    // Your existing JavaScript code with the added functionality for the "No Thanks" button
     const noThanksButton = document.getElementById('noThanksButton');
 
     // Function to reposition the button randomly within the visible screen
@@ -257,11 +258,14 @@
       noThanksButton.style.top = randomY + 'px';
     }
 
-    // Add click event listener to the button
-    noThanksButton.addEventListener('click', function() {
+    // Function to handle "No Thanks" button click
+    function handleNoThanksClick() {
+      alert("aww, is that really your choice?");
       repositionButton();
-      noThanksButton.removeEventListener('click', this); // Remove event listener after click
-    });
+    }
+
+    // Add click event listener to the button
+    noThanksButton.addEventListener('click', handleNoThanksClick);
 
     function showThankYouMessage() {
       var thankYouMessage = document.querySelector('.thank-you-message');
