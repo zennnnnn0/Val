@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine's Invitation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background-color: #f8bbd0; /* Lighter pink background */
+      overflow: hidden; /* Prevent scrolling */
+      position: relative;
+    }
+
+    .heart {
+      position: absolute;
+      color: #ff4081; /* Pink heart */
+      font-size: 20px;
+      animation: hearts-fall 30s linear infinite;
+    }
+
+    @keyframes hearts-fall {
+      0% {
+        transform: translateY(-10vh) rotate(0deg);
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+      }
+    }
+
+    .initial-page {
+      background-color: #fce4ec; /* Light pink background */
+      color: #000; /* Black text */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      position: relative;
+    }
+
+    .messages-container {
+      max-width: 80%;
+      margin-bottom: 50px;
+    }
+
+    .message {
+      display: none;
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: #000; /* Black heading */
+    }
+
+    button {
+      background-color: #fff; /* White button */
+      color: #e91e63; /* Pink text */
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      position: relative;
+      transition: background-color 0.3s ease; /* Smooth button hover effect */
+    }
+
+    button:hover {
+      background-color: #f8bbd0; /* Light pink on hover */
+    }
+
+    .invitation-container {
+      background-color: #e91e63; /* Pink background */
+      color: #000; /* Black text */
+      border-radius: 20px; /* Slightly rounded corners */
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+      padding: 50px;
+      max-width: 80%;
+      margin: 100px auto;
+      position: relative;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .fade-out {
+      opacity: 0;
+    }
+
+    .image-container {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .decorative-design {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('https://cdn.pixabay.com/photo/2018/01/09/11/53/background-3076044_960_720.jpg') center/cover no-repeat;
+      opacity: 0.2;
+    }
+  </style>
+</head>
+<body>
+  <!-- Falling hearts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const heartContainer = document.createElement('div');
+      heartContainer.classList.add('heart-container');
+      document.body.appendChild(heartContainer);
+
+      setInterval(function () {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = '&#10084;';
+        heart.style.left = Math.random() * window.innerWidth + 'px';
+        heartContainer.appendChild(heart);
+
+        setTimeout(function () {
+          heart.remove();
+        }, 30000); // Remove heart after 30 seconds
+      }, 1000); // Generate a new heart every second
+    });
+  </script>
+
+  <div class="initial-page">
+    <div class="decorative-design"></div>
+    <div class="messages-container">
+      <div class="message">Heyy, I know this is kind of weird and cheesy</div>
+      <div class="message">And never have I ever thought I'd be making something like this for anyone</div>
+      <div class="message">But I'm really glad more than anything that it got to be you that I'm making this for</div>
+      <div class="message">Today's Valentine's, right?</div>
+      <div class="message">I just want you to know how important you are to me</div>
+      <div class="message">And I'm so thankful for everything that you've done for me</div>
+      <div class="message">I don't wanna force anything on you and I want you to enjoy your life.</div>
+      <div class="message">But sometimes I can be selfish talaga so forgive me</div>
+      <div class="message">So I wanna ask you....</div>
+      <div class="message">Will you be my Valentine?</div>
+    </div>
+    <button id="nextButton" onclick="showNextMessage()">Next</button>
+  </div>
+
+  <div class="invitation-container" id="invitationContainer">
+    <h1>Happy Valentines Day Sophhh^^</h1>
+    <p>Soo... may i know your answer??>.<</p>
+
+    <div class="message-container"></div>
+
+    <div class="button-container">
+      <button id="partyButton" onclick="celebrate()">Yes!</button>
+      <div id="noThanksContainer">
+        <button id="noThanksButton">No Thanks</button>
+      </div>
+    </div>
+
+    <div id="partyText"></div>
+    <div class="image-container">
+      <span class="heart">&#10084;</span> <!-- Heart icon -->
+    </div>
+  </div>
+
+  <div class="thank-you-message" style="opacity: 0; transition: opacity 0.5s ease-in-out;">
+    <p>Thank you so muchhh, aixhdjdhs kinikilig nanaman ako</p>
+    <p>/*Tumalon sa fourth floor eme, send mo saken reactions mo hehe or experience ganern</p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.0.1"></script>
+  <script>
+    var messages = [
+      "Heyy, I know this is kind of weird and cheesy",
+      "And never have I ever thought I'd be making something like this for anyone",
+      "But I'm really glad more than anything that it got to be you that I'm making this for",
+      "Today's Valentine's, right?",
+      "I just want you to know how important you are to me",
+      "And I'm so thankful for everything that you've done for me",
+      "I don't wanna force anything on you and I want you to enjoy your life.",
+      "But sometimes I can be selfish talaga so forgive me",
+      "So I wanna ask you....",
+      "Will you be my Valentine?"
+    ];
+    var currentMessageIndex = 0;
+
+    function showNextMessage() {
+      var initialPage = document.querySelector('.initial-page');
+      var messageElement = document.querySelector('.message');
+      
+      if (!messageElement) {
+        messageElement = document.createElement('div');
+        messageElement.classList.add('message');
+        document.body.insertBefore(messageElement, initialPage.nextSibling);
+      }
+      
+      messageElement.textContent = messages[currentMessageIndex];
+      messageElement.style.display = 'block';
+
+      if (currentMessageIndex === messages.length - 1) {
+        setTimeout(function() {
+          initialPage.style.opacity = '0';
+          setTimeout(function() {
+            initialPage.style.display = 'none';
+            var invitationContainer = document.getElementById('invitationContainer');
+            invitationContainer.style.display = 'block';
+          }, 500);
+        }, 2000); // Adjust the duration for the last message before fading out
+      }
+
+      currentMessageIndex++;
+    }
+
+    function celebrate() {
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+        shapes: ['heart'],
+      });
+
+      // Hide the invitation container with a fading animation
+      var invitationContainer = document.getElementById('invitationContainer');
+      invitationContainer.classList.add('fade-out');
+
+      // Clear the invitation container after the fading animation completes
+      setTimeout(function () {
+        invitationContainer.style.display = 'none';
+        showThankYouMessage();
+      }, 500); // Adjust the duration of the fading animation
+    }
+
+    const noThanksButton = document.getElementById('noThanksButton');
+
+    // Function to reposition the button randomly within the visible screen
+    function repositionButton() {
+      const buttonRect = noThanksButton.getBoundingClientRect();
+
+      // Calculate the maximum allowed coordinates based on the viewport size
+      const maxWidth = document.documentElement.clientWidth - buttonRect.width;
+      const maxHeight = document.documentElement.clientHeight - buttonRect.height;
+
+      // Calculate random coordinates within the visible area of the screen
+      const randomX = Math.floor(Math.random() * maxWidth);
+      const randomY = Math.floor(Math.random() * maxHeight);
+
+      // Set the new position of the button
+      noThanksButton.style.left = randomX + 'px';
+      noThanksButton.style.top = randomY + 'px';
+    }
+
+    // Add click event listener to the button
+    noThanksButton.addEventListener('click', function() {
+      repositionButton();
+      noThanksButton.removeEventListener('click', this); // Remove event listener after click
+    });
+
+    function showThankYouMessage() {
+      var thankYouMessage = document.querySelector('.thank-you-message');
+      thankYouMessage.style.opacity = '1';
+    }
+  </script>
+</body>
+</html>
+
